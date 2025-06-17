@@ -49,7 +49,7 @@ jobs:
 
       - name: Copy Docker image to server
         run: |
-          scp spring-app.tar ubuntu@43.203.181.130:~/spring-app.tar
+          rsync -e "ssh i ~/.ssh/id_ed25519 -o StringHostKeyChecking=no" -avz spring-app.tar ubuntu@43.203.181.130:~/spring-app.tar
 
       - name: Load and run Docker image on server
         run: |
